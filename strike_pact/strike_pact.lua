@@ -44,7 +44,6 @@ local rearguard = {
         unit(Squad.SQ_CABAL_REARGUARD_0, Slot.SQ_CABAL_REARGUARD_0),
         unit(Squad.SQ_CABAL_REARGUARD_2, Slot.SQ_CABAL_REARGUARD_2),
         unit(Squad.SQ_VEX_HARASSERS_0, Slot.SQ_VEX_HARASSERS_0),
-        unit(Squad.SQ_CABAL_ANCHOR, Slot.SQ_CABAL_ANCHOR),
     },
 }
 
@@ -77,7 +76,6 @@ local first_room = {
     squads = {
         unit(Squad.SQ_CABAL_FIRSTROOM_0, Slot.SQ_CABAL_FIRSTROOM_0),
         unit(Squad.SQ_CABAL_FIRSTROOM_1, Slot.SQ_CABAL_FIRSTROOM_1),
-        unit(Squad.SQ_CABAL_FIRSTROOM_2, Slot.SQ_CABAL_FIRSTROOM_2),
         unit(Squad.SQ_CABAL_FIRSTROOM_3, Slot.SQ_CABAL_FIRSTROOM_3),
         unit(Squad.SQ_CABAL_FIRSTROOM_4, Slot.SQ_CABAL_FIRSTROOM_4),
         unit(Squad.SQ_CABAL_FIRSTROOM_5, Slot.SQ_CABAL_FIRSTROOM_5),
@@ -112,16 +110,12 @@ local conflict = {
     after = "conflict",
     objective = Slot.OBJ_CHASE,
     squads = {
-        unit(Squad.SQ_CONFLICT_SNIPERS_0, Slot.SQ_CONFLICT_SNIPERS_0),
         unit(Squad.SQ_CONFLICT_SNIPERS_1, Slot.SQ_CONFLICT_SNIPERS_1),
         unit(Squad.SQ_CONFLICT_GOONS_TOP_0, Slot.SQ_CONFLICT_GOONS_TOP_0),
         unit(Squad.SQ_CONFLICT_GOONS_TOP_1, Slot.SQ_CONFLICT_GOONS_TOP_1),
         unit(Squad.SQ_CONFLICT_GOONS_0, Slot.SQ_CONFLICT_GOONS_0),
-        unit(Squad.SQ_CONFLICT_GOONS_1, Slot.SQ_CONFLICT_GOONS_1),
         unit(Squad.SQ_CONFLICT_GOONS_2, Slot.SQ_CONFLICT_GOONS_2),
-        unit(Squad.SQ_CONFLICT_GOONS_3, Slot.SQ_CONFLICT_GOONS_3),
         unit(Squad.SQ_CONFLICT_GOONS_4, Slot.SQ_CONFLICT_GOONS_4),
-        unit(Squad.SQ_CONFLICT_GOONS_5, Slot.SQ_CONFLICT_GOONS_5),
     },
 }
 
@@ -132,7 +126,6 @@ local ledge = {
     squads = {
         unit(Squad.SQ_CABAL_LEDGE_0, Slot.SQ_CABAL_LEDGE_0),
         unit(Squad.SQ_CABAL_LEDGE_1, Slot.SQ_CABAL_LEDGE_1),
-        unit(Squad.SQ_CABAL_LEDGE_2, Slot.SQ_CABAL_LEDGE_2),
         unit(Squad.SQ_CABAL_LEDGE_3, Slot.SQ_CABAL_LEDGE_3),
         unit(Squad.SQ_CABAL_LEDGE_4, Slot.SQ_CABAL_LEDGE_4),
         unit(Squad.SQ_CABAL_LEDGE_5, Slot.SQ_CABAL_LEDGE_5),
@@ -167,9 +160,7 @@ local prefight = {
     squads = {
         unit(Squad.SQ_PREFIGHT_SKIRMISH_0, Slot.SQ_PREFIGHT_SKIRMISH_0),
         unit(Squad.SQ_PREFIGHT_SKIRMISH_1, Slot.SQ_PREFIGHT_SKIRMISH_1),
-        unit(Squad.SQ_PREFIGHT_SKIRMISH_2, Slot.SQ_PREFIGHT_SKIRMISH_2),
         unit(Squad.SQ_PREFIGHT_SKIRMISH_3, Slot.SQ_PREFIGHT_SKIRMISH_3),
-        unit(Squad.SQ_PREFIGHT_SKIRMISH_4, Slot.SQ_PREFIGHT_SKIRMISH_4),
         unit(Squad.SQ_PREFIGHT_SKIRMISH_5, Slot.SQ_PREFIGHT_SKIRMISH_5),
     },
 }
@@ -196,15 +187,11 @@ local room1 = {
         unit(Squad.SQ_ROOM1_ADDS_3, Slot.SQ_ROOM1_ADDS_3),
         unit(Squad.SQ_ROOM1_ADDS_4, Slot.SQ_ROOM1_ADDS_4),
         unit(Squad.SQ_ROOM1_ADDS_5, Slot.SQ_ROOM1_ADDS_5),
-        unit(Squad.SQ_ROOM1_ADDS_6, Slot.SQ_ROOM1_ADDS_6),
-        unit(Squad.SQ_ROOM1_VEX_0, Slot.SQ_ROOM1_VEX_0),
-        unit(Squad.SQ_ROOM1_VEX_1, Slot.SQ_ROOM1_VEX_1),
         unit(Squad.SQ_ROOM1_VEX_2, Slot.SQ_ROOM1_VEX_2),
         unit(Squad.SQ_ROOM1_VEX_3, Slot.SQ_ROOM1_VEX_3),
         unit(Squad.SQ_ROOM1_VEX_4, Slot.SQ_ROOM1_VEX_4),
         unit(Squad.SQ_ROOM1_VEX_5, Slot.SQ_ROOM1_VEX_5),
         unit(Squad.SQ_ROOM1_VEX_6, Slot.SQ_ROOM1_VEX_6),
-        unit(Squad.SQ_ROOM1_SHIELD_VEX, Slot.SQ_ROOM1_SHIELD_VEX),
     },
 }
 
@@ -220,14 +207,11 @@ local room2 = {
         unit(Squad.SQ_ROOM2_ADDS_4, Slot.SQ_ROOM2_ADDS_4),
         unit(Squad.SQ_ROOM2_ADDS_5, Slot.SQ_ROOM2_ADDS_5),
         unit(Squad.SQ_ROOM2_ADDS_6, Slot.SQ_ROOM2_ADDS_6),
-        unit(Squad.SQ_ROOM2_VEX_0, Slot.SQ_ROOM2_VEX_0),
-        unit(Squad.SQ_ROOM2_VEX_1, Slot.SQ_ROOM2_VEX_1),
         unit(Squad.SQ_ROOM2_VEX_2, Slot.SQ_ROOM2_VEX_2),
         unit(Squad.SQ_ROOM2_VEX_3, Slot.SQ_ROOM2_VEX_3),
         unit(Squad.SQ_ROOM2_VEX_4, Slot.SQ_ROOM2_VEX_4),
         unit(Squad.SQ_ROOM2_VEX_5, Slot.SQ_ROOM2_VEX_5),
         unit(Squad.SQ_ROOM2_VEX_6, Slot.SQ_ROOM2_VEX_6),
-        unit(Squad.SQ_ROOM2_SHIELD_VEX, Slot.SQ_ROOM2_SHIELD_VEX),
     },
 }
 
