@@ -5,8 +5,9 @@
 local missions = require("missions")
 local mission = require(missions.MISSION_TOWERFALL)
 local campaign = require("lib.campaign")
+local lib = require("lib.mission_lib")
 local unit, line, move = campaign.unit, campaign.line, campaign.move
-local Slot, Squad, Directive = mission.Slot, mission.Squad, mission.Directive
+local Slot, Squad, Directive, Scene = mission.Slot, mission.Squad, mission.Directive, mission.Scene
 local cue = mission.DialogueCue.M_DIALOG_SENSOR_80B50913
 
 -- The Underwatch crowd, Shaxx and the frames dress the opening. They carry no objective.
@@ -35,6 +36,18 @@ local underwatch_cast = {
         unit(Squad.SQ_CIVILIAN_ON_KNEES_CRYING, Slot.SQ_CIVILIAN_ON_KNEES_CRYING),
         unit(Squad.SQ_CIVILIAN_HERO_MOMENT, Slot.SQ_CIVILIAN_HERO_MOMENT),
     },
+    -- Placed bodies hold a default pose until their scene runs, so the cast stands still without
+    -- these. Only scenes with a symbol entry activate; a sensor-only row is an idle instead.
+    on_start = function(context)
+        lib.activate_scenes(context, {
+            Scene.SCENE_SHAXX,
+            Scene.SC_CIVILIAN_CATATONIC,
+            Scene.SC_CIVILIAN_KNEEL,
+            Scene.SC_CIVILIAN_GROUND_1,
+            Scene.SC_CIVILIAN_GROUND_2,
+            Scene.SC_CIVILIAN_ON_KNEES_CRYING,
+        })
+    end,
 }
 
 -- "Watch out!" then "Cabal!" as the drop pod lands.
@@ -50,6 +63,12 @@ local first_contact = {
         unit(Squad.SQ_CABAL_HERO_MOMENT, Slot.SQ_CABAL_HERO_MOMENT),
         unit(Squad.SQ_CABAL_HERO_MOMENT_B, Slot.SQ_CABAL_HERO_MOMENT_B),
     },
+    -- Cayde stands up and Golden Guns the two hero-moment Legionaries this same encounter places.
+    -- PT_HERO_MOMENT is a scene trigger the script fires, not a volume the player crosses, so the
+    -- scenes hang off the drop pod instead.
+    on_start = function(context)
+        lib.activate_scenes(context, {Scene.SC_HERO_MOMENT_UNDERWATCH, Scene.SCENE_CAYDE_GOLDEN_GUN})
+    end,
 }
 
 local centurion = {
@@ -85,6 +104,11 @@ local hangar = {
     id = "hangar_fight",
     trigger = Slot.PT_HANGAR_SPAWN,
     objective = Slot.OBJ_HANGAR,
+    -- The hangar gating doors stay shut until something opens them, so the way on to
+    -- PT_GOTO_PLAZA_80B50B91 is walled off and the hangar step can never end.
+    on_start = function(context)
+        move(context, {Slot.D_GATING_AMANDA_START, Slot.D_GATING_AMANDA_HANGAR}, "open")
+    end,
     squads = {
         unit(Squad.SQ_MILITARY_HALLWAY_DESTRUCTION, Slot.SQ_MILITARY_HALLWAY_DESTRUCTION),
         unit(Squad.SQ_HANGAR_OVERLOOK_A_A, Slot.SQ_HANGAR_OVERLOOK_A_A),
@@ -319,10 +343,20 @@ return campaign.new{
         {id = "home", directive = Directive.DEFEND_YOUR_HOME, navpoint = Slot.AP_IKORA,
             lines = {line(cue.CUE_1)},
             ends = {trigger = Slot.PT_PLAYER_NEAR_SHAXX}},
-        -- Shaxx opens his armory; the gun door is the way in.
+        -- Walk to the armory with the door still shut. PT_WEAPON sits at its threshold.
         {id = "gear", directive = Directive.GEAR_UP_FOR_THE_FIGHT,
             navpoint = Slot.SLOT_0009_80B5168C,
-            on_start = function(context) move(context, {Slot.D_GUN_DOOR}, "open") end,
+            ends = {trigger = Slot.PT_WEAPON}},
+        -- At the door Shaxx speaks and opens it. The rifles need their rows before the prompt
+        -- shows: without one the client shows a generic prompt and never reports a use.
+        {id = "armory",
+            on_start = function(context)
+                move(context, {Slot.D_GUN_DOOR}, "open")
+                for _, rifle in ipairs({Slot.AUTO_RIFLE_INTERACTABLE, Slot.PULSE_RIFLE_INTERACTABLE,
+                    Slot.SCOUT_RIFLE_INTERACTABLE}) do
+                    context:slot(rifle):set_interactable_object{used = true}
+                end
+            end,
             ends = {trigger = Slot.PT_WEAPON_COMPLETE}},
         -- The evacuation announcement waits in the volume on the way down.
         {id = "find", directive = Directive.FIND_ZAVALA_432D2C96,
