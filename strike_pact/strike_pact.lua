@@ -265,13 +265,21 @@ return campaign.new{
             navpoint = Slot.AP_FOREST_PORTAL_80F55205,
             lines = {line(cue.CUE_0)},
             ends = {clear = {"rearguard", "vanguard"}}},
-        -- The wall comes down and the teleport opens.
+        -- The wall comes down and the teleport opens. The authored teleporter is what carries the
+        -- player, so the step only activates it and waits: selecting the Forest state here instead
+        -- moves them the instant the last defender dies, with no walk into the portal.
+        -- strike_bond does the same on its own LIGHTHOUSE_TELEPORT.
         {id = "traverse", directive = Directive.TRAVERSE_THE_INFINITE_FOREST,
             navpoint = Slot.AP_FOREST_PORTAL_80F55205,
             on_start = function(context)
                 move(context, {Slot.D_SHIELD_WALL_80F551DE}, "close")
+                context:activate_objects{slots = {Slot.LIGHTHOUSE_TELEPORT}, active = true}
             end,
-            ends = {trigger = Slot.PT_ENTER_TUNNEL, region = "forest"}},
+            -- Only the region report ends this. PT_ENTER_TUNNEL fires as the player enters the
+            -- tunnel, about twenty seconds before the client holds the Forest, so ending on it
+            -- starts the next step against an object that is still loading and its device is
+            -- refused as target_unavailable. strike_bond's briefing step ends on the region alone.
+            ends = {region = "forest"}},
         -- The Forest island. The generator is seeded as the shield goes up.
         {id = "track", directive = Directive.TRACK_THE_CABAL,
             navpoint = Slot.AP_FOREST_PORTAL_80F550C9,
