@@ -18,6 +18,7 @@ local intro = {
     squads = {
         unit(Squad.SQ_INTRO_FIGHT_0, Slot.SQ_INTRO_FIGHT_0),
         unit(Squad.SQ_INTRO_FIGHT_1, Slot.SQ_INTRO_FIGHT_1),
+        unit(Squad.SQ_INTRO_FIGHT_2, Slot.SQ_INTRO_FIGHT_2),
     },
 }
 
@@ -29,8 +30,17 @@ local vanguard = {
         unit(Squad.SQ_CABAL_VANGUARD_0, Slot.SQ_CABAL_VANGUARD_0),
         unit(Squad.SQ_CABAL_VANGUARD_1, Slot.SQ_CABAL_VANGUARD_1),
         unit(Squad.SQ_CABAL_VANGUARD_2, Slot.SQ_CABAL_VANGUARD_2),
+        unit(Squad.SQ_CABAL_VANGUARD_3, Slot.SQ_CABAL_VANGUARD_3),
+        unit(Squad.SQ_CABAL_VANGUARD_4, Slot.SQ_CABAL_VANGUARD_4),
+        unit(Squad.SQ_CABAL_VANGUARD_5, Slot.SQ_CABAL_VANGUARD_5),
+        unit(Squad.SQ_CABAL_VANGUARD_6, Slot.SQ_CABAL_VANGUARD_6),
         unit(Squad.SQ_MIXED_CENTER_0, Slot.SQ_MIXED_CENTER_0),
+        unit(Squad.SQ_MIXED_CENTER_1, Slot.SQ_MIXED_CENTER_1),
+        unit(Squad.SQ_MIXED_CENTER_2, Slot.SQ_MIXED_CENTER_2),
+        unit(Squad.SQ_MIXED_CENTER_3, Slot.SQ_MIXED_CENTER_3),
         unit(Squad.SQ_MIXED_CENTER_4, Slot.SQ_MIXED_CENTER_4),
+        unit(Squad.SQ_MIXED_CENTER_5, Slot.SQ_MIXED_CENTER_5),
+        unit(Squad.SQ_MIXED_CENTER_6, Slot.SQ_MIXED_CENTER_6),
         unit(Squad.SQ_MIXED_CENTER_7, Slot.SQ_MIXED_CENTER_7),
     },
 }
@@ -42,8 +52,10 @@ local rearguard = {
     objective = Slot.OBJ_PACT_LIGHTHOUSE,
     squads = {
         unit(Squad.SQ_CABAL_REARGUARD_0, Slot.SQ_CABAL_REARGUARD_0),
+        unit(Squad.SQ_CABAL_REARGUARD_1, Slot.SQ_CABAL_REARGUARD_1),
         unit(Squad.SQ_CABAL_REARGUARD_2, Slot.SQ_CABAL_REARGUARD_2),
         unit(Squad.SQ_VEX_HARASSERS_0, Slot.SQ_VEX_HARASSERS_0),
+        unit(Squad.SQ_VEX_HARASSERS_1, Slot.SQ_VEX_HARASSERS_1),
     },
 }
 
@@ -116,6 +128,7 @@ local conflict = {
         unit(Squad.SQ_CONFLICT_GOONS_0, Slot.SQ_CONFLICT_GOONS_0),
         unit(Squad.SQ_CONFLICT_GOONS_2, Slot.SQ_CONFLICT_GOONS_2),
         unit(Squad.SQ_CONFLICT_GOONS_4, Slot.SQ_CONFLICT_GOONS_4),
+        unit(Squad.SQ_CONFLICT_GOONS_5, Slot.SQ_CONFLICT_GOONS_5),
     },
 }
 
